@@ -1,0 +1,23 @@
+<div class="container">
+
+  <%= render "devise/shared/error_messages", resource: @book %>
+
+
+  <div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>Editing Book</h1>
+  <!-- <div class='col-md-3 col-md-offset-3'>
+  </div> -->
+   <%= form_for(@book) do |f| %>
+    <h4>Title</h4>
+    <%= f.text_field :title %>
+    <h4>Opinion</h4>
+    <%= f.text_area :body %><br>
+    <%= f.submit 'Update book', method: :put %><br>
+    <% end %>
+    <%= link_to 'Show', user_path %>
+    |
+     <%= link_to 'Back', books_path %>
+    <div class="col-md-3"></div>
+ </div>
+</div>

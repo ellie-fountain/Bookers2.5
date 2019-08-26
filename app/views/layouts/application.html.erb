@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers25</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header style="background-color: black">
+  <div>
+    <div>
+      <div>
+        <div class="container">
+          <div class="row">
+        <nav class="nav navbar-nav navbar-left">
+          <span class="booker" style="color: white">Bookers</span>
+        </nav>
+        <nav class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to user_path(current_user.id) do %><span class="glyphicon glyphicon-home" aria-hidden="true">Home</span><% end %>
+          </li>
+          <li>
+             <%= link_to users_path do %><span class="glyphicon glyphicon-user" aria-hidden="true">User</span><% end %>
+          </li>
+          <li>
+            <%= link_to books_path do %><span class="glyphicon glyphicon-book" aria-hidden="true">Book</span><% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %><span class="glyphicon glyphicon-log-out" aria-hidden="true">logout</span><% end %>
+          </li>
+         <% else %>
+         <li>
+            <%= link_to root_path do %><span class="glyphicon glyphicon-home" aria-hidden="true">Home</span><% end %>
+          </li>
+          <li>
+            <%= link_to home_about_path do %><span class="glyphicon glyphicon-link" aria-hidden="true">About</span><% end %>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path do %><span class="glyphicon glyphicon-edit" aria-hidden="true">sign up</span><% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path do %><span class="glyphicon glyphicon-log-in" aria-hidden="true">login</span><% end %>
+          </li>
+          <% end %>
+        </nav>
+       </div>
+      </div>
+    </div>
+   </div>
+  </header>
+  <%= render 'layouts/notifications' %>
+    <%= yield %>
+  <footer>
+    <div class="col-xs-3 col-xs-offset-9">
+        <p>CopyRight Infratop.inc</p>
+    </div>
+  </footer>
+  </body>
+</html>

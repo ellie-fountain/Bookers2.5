@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+  	<div class="col-xs-3">
+      <%= render 'users/list', user:@user, book:@books %>
+    </div>
+    <div class="col-xs-9">
+		   <h2>Book detail</h2>
+		     <table class="table">
+		  <tbody>
+		  	<tr>
+          <td>
+            <%= attachment_image_tag @book.user, :profile_image,class: "img-circle profile-thumb", fallback: "no_image.jpg", size: "40x40" %><br>
+            <%= link_to @book.user.name, user_path(@book.user_id) %>
+          </td>
+          <td><%= @book.title %></td>
+          <td><%= @book.body %></td>
+          <% if @book.user_id == current_user.id %>
+          <td><%= link_to 'Edit', edit_book_path(@book), class:'btn-sm btn-success' %></td>
+          <td><%= link_to 'Destroy', book_path(@book), method: :delete, class:'btn-sm btn-danger' %></td>
+          <% else %>
+          <td></td>
+          <td></td>
+          <% end %>
+        </tr>
+      </tbody></table>
+
+    </div>
+   </div>
+</div>
